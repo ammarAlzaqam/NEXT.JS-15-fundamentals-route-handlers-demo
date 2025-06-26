@@ -18,7 +18,7 @@ export async function PATCH(
   const { text } = (await request.json()) as Comment;
   if (!text) return new Response("Text is required", { status: 400 });
 
-  let index = comments.findIndex((c) => c.id === parseInt(id));
+  const index = comments.findIndex((c) => c.id === parseInt(id));
   if (!index) return new Response("This comment not exist", { status: 404 });
   comments[index].text = text;
   return new Response("Comment is updated successfully", { status: 200 });
